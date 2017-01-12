@@ -7,22 +7,6 @@ import (
 	"text/template"
 )
 
-func divide(a int, b int) int {
-	return a / b
-}
-
-func multip(a int, b int) int {
-	return a * b
-}
-
-func minus(input int, change int) int {
-	return input - change
-}
-
-func plus(input int, change int) int {
-	return input + change
-}
-
 func hasKey(data map[string]service.Service, appId string) bool {
 	_, exists := data[appId]
 	return exists
@@ -38,10 +22,7 @@ func getService(data map[string]service.Service, appId string) service.Service {
 */
 func RenderTemplate(templateName string, templateContent string, data interface{}) (string, error) {
 	funcMap := template.FuncMap{
-		"divide":     divide,
-		"multip":     multip,
-		"minus":      minus,
-		"plus":       plus,
+		"hasKey":     hasKey,
 		"getService": getService,
 		"Split":      strings.Split,
 		"Contains":   strings.Contains,
